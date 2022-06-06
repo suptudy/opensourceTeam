@@ -14,4 +14,9 @@
 
 - 클래스 구성 예시 
 
-![image](https://user-images.githubusercontent.com/74354757/172124372-dab4215b-ef55-4ad0-bc39-21056ebcee41.png)
+![open_team_class drawio (1)](https://user-images.githubusercontent.com/74354757/172226827-939c2e41-5a8f-4432-9fda-8ab2cfbd184c.png)
+
+- 예시 출력
+
+![image](https://user-images.githubusercontent.com/74354757/172227113-1a489de8-3c91-49b4-a51e-612c38a6179e.png)
+
