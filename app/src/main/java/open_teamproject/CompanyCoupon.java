@@ -31,7 +31,7 @@ abstract class CompanyCoupon {
         System.out.println("정상가 : " + clothes.price());
     }
 
-    // 회사 OR 카드 할인 선택
-    public abstract float select_discount(int select);
+    // 회사 OR 카드 할인 중 최대 할인
+    public abstract float select_discount();
 
 }

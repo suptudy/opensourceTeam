@@ -59,7 +59,7 @@ public class DiscountTest {
         coupon.grade_discount(customerGrade);
         coupon.discount_result_com();
 
-        assertEquals(13500.0, coupon.select_discount(1), 0.1);
+        assertEquals(13500.0, coupon.select_discount(), 0.1);
         // 1 : 회사 할인
     }
 }

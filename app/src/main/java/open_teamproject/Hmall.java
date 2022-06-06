@@ -23,21 +23,21 @@ public class Hmall extends CompanyCoupon {
         int gold = 100000; // 10만원 이상
         int silver = 0; // 미주문
 
-        System.out.print(customer + " 고객님의 누적 사용 금액은 " + amountUsed);
         String customerGrade = "silver";
         if (amountUsed < gold) {
-            System.out.println(", silver 등급 입니다.");
+            System.out.println(", [silver 등급] 입니다.");
         } else if (gold <= amountUsed & amountUsed < platinum) {
-            System.out.println(", gold 등급 입니다.");
+            System.out.println(", [gold 등급] 입니다.");
             customerGrade = "gold";
         } else if (platinum <= amountUsed & amountUsed < diamond) {
-            System.out.println(", platinum 등급 입니다.");
+            System.out.println(", [platinum 등급] 입니다.");
             customerGrade = "platinum";
         } else {
-            System.out.println(", diamond 등급 입니다.");
+            System.out.println(", [diamond 등급] 입니다.");
             customerGrade = "diamond";
         }
-
+        System.out.println("누적 사용 금액은 " + amountUsed + "입니다.");
+        System.out.println();
         return customerGrade;
     }
 
@@ -77,7 +77,7 @@ public class Hmall extends CompanyCoupon {
 
         if (map.containsKey(card)) {
             discount_card = (int) map.get(card);
-            System.out.println(card + "로 " + discount_card + "원 할인 가능");
+            System.out.println("선택하신 " + card + "로 " + discount_card + "원 할인 가능");
         }
 
         return discount_card;
@@ -85,19 +85,22 @@ public class Hmall extends CompanyCoupon {
 
     @Override
     public int discount_result_com() {
-        System.out.println("최대 할인 가능 : " + discount_com + "%");
+        System.out.println("쇼핑몰 최대 할인 가능 : " + discount_com + "%");
+        System.out.println();
         return discount_com;
     }
 
     @Override
-    public float select_discount(int select) {
+    public float select_discount() {
         float comResult = (float) (clothes.price() * ((100 - discount_com) * 0.01));
         float cardResult = clothes.price() - 5000;
-        if (select == 1) {
-            System.out.println("[쇼핑몰할인선택] 최종 금액 : " + comResult + "원");
+        System.out.println();
+        System.out.println("----- 최대 할인 적용 결과 -----");
+        if (comResult > cardResult) {
+            System.out.println("[쇼핑몰할인] 최종 금액 : " + comResult + "원");
             return comResult;
         } else {
-            System.out.println("[카드할인선택] 최종 금액 : " + cardResult + "원");
+            System.out.println("[카드할인] 최종 금액 : " + cardResult + "원");
             return cardResult;
         }
     }
