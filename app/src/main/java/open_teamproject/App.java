@@ -3,12 +3,43 @@
  */
 package open_teamproject;
 
+import java.util.Scanner;
+
 public class App {
     public String getGreeting() {
         return "Hello World!";
     }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        // 나중에 요일 관련된 것 함수화
+        int year, month, day;
+        String Finalday;
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("----- 상품별 할인을 알아볼 날짜를 입력하세요 -----");
+        System.out.print("년도 : ");
+        year = sc.nextInt();
+        System.out.print("월 : ");
+        month = sc.nextInt();
+        System.out.print("일 : ");
+        day = sc.nextInt();
+        GetDayCalendar calendar = new GetDayCalendar(year, month, day);
+        Finalday = calendar.check();
+        System.out.println();
+
+        // Hmall에 관련된 것 함수화
+        System.out.println("----- 선택하신 상품의 [Hmall]에서의 가격 -----");
+        Clothes clothes = new Hat();
+        CompanyCoupon coupon = new Hmall(clothes, "권수빈", 300000);
+        String card = "신한카드";
+        String customerGrade = coupon.customer_grade();
+        System.out.println("----- [Hmall 회원 및 이벤트 할인] -----");
+        coupon.grade_discount(customerGrade);
+        coupon.event_day(Finalday);
+        coupon.discount_result_com();
+
+        System.out.println("----- [Hmall 제휴 카드 할인] -----");
+        coupon.card_discount(card);
+        coupon.select_discount();
     }
 }
