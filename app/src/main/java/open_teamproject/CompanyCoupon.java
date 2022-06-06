@@ -14,4 +14,8 @@ abstract class CompanyCoupon {
 
     // 카드사 할인에 따른 [카드]
     public abstract int card_discount(String card);
+
+    // 회사 할인 최대 혜택
+    public abstract int discount_result_com();
+
 }

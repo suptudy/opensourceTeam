@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Hmall extends CompanyCoupon {
-    private int discount_com = 0; // 회사 할인
+    public int discount_com = 0; // 회사 할인
     private String customer;
     private int amountUsed;
 
@@ -80,6 +80,11 @@ public class Hmall extends CompanyCoupon {
         }
 
         return discount_card;
+    }
+
+    @Override
+    public int discount_result_com() {
+        return discount_com;
     }
 
 }
