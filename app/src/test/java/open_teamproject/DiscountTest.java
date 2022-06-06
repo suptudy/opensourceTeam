@@ -8,10 +8,12 @@ import org.junit.Test;
 
 public class DiscountTest {
     CompanyCoupon coupon;
+    Clothes clothes;
 
     @Before
     public void setUp() {
-        coupon = new Hmall("권수빈", 300000);
+        clothes = new Hat();
+        coupon = new Hmall(clothes, "권수빈", 300000);
     }
 
     @After
@@ -46,5 +48,18 @@ public class DiscountTest {
         coupon.grade_discount(customerGrade);
 
         assertEquals(13, coupon.discount_result_com());
+    }
+
+    @Test
+    public void test_Hmall_select_discount() {
+        GetDayCalendar calendar = new GetDayCalendar(2022, 6, 7);
+        String day = calendar.check();
+        coupon.event_day(day);
+        String customerGrade = coupon.customer_grade();
+        coupon.grade_discount(customerGrade);
+        coupon.discount_result_com();
+
+        assertEquals(13500.0, coupon.select_discount(1), 0.1);
+        // 1 : 회사 할인
     }
 }

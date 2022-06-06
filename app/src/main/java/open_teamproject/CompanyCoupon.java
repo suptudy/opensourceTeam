@@ -1,6 +1,11 @@
 package open_teamproject;
 
 abstract class CompanyCoupon {
+    protected Clothes clothes;
+
+    public CompanyCoupon(Clothes clothes) {
+        this.clothes = clothes;
+    }
     // 2가지의 할인 존재 : 회사(~%), 카드(~원)
 
     // 회사별 고객 등급 확인
@@ -17,5 +22,16 @@ abstract class CompanyCoupon {
 
     // 회사 할인 최대 혜택
     public abstract int discount_result_com();
+
+    // 할인을 적용할 clothes 정보
+    public void select_clothes_info() {
+        System.out.println("카테고리명 : " + clothes.product_kind());
+        System.out.println("상품명 : " + clothes.product_name());
+        System.out.println("브랜드명 : " + clothes.brand());
+        System.out.println("정상가 : " + clothes.price());
+    }
+
+    // 회사 OR 카드 할인 선택
+    public abstract float select_discount(int select);
 
 }

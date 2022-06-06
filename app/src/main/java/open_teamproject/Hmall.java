@@ -8,7 +8,8 @@ public class Hmall extends CompanyCoupon {
     private String customer;
     private int amountUsed;
 
-    public Hmall(String customer, int amountUsed) {
+    public Hmall(Clothes clothes, String customer, int amountUsed) {
+        super(clothes);
         this.customer = customer;
         this.amountUsed = amountUsed;
     }
@@ -84,7 +85,21 @@ public class Hmall extends CompanyCoupon {
 
     @Override
     public int discount_result_com() {
+        System.out.println("최대 할인 가능 : " + discount_com + "%");
         return discount_com;
+    }
+
+    @Override
+    public float select_discount(int select) {
+        float comResult = (float) (clothes.price() * ((100 - discount_com) * 0.01));
+        float cardResult = clothes.price() - 5000;
+        if (select == 1) {
+            System.out.println("[쇼핑몰할인선택] 최종 금액 : " + comResult + "원");
+            return comResult;
+        } else {
+            System.out.println("[카드할인선택] 최종 금액 : " + cardResult + "원");
+            return cardResult;
+        }
     }
 
 }
