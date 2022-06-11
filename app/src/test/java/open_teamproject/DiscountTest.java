@@ -28,6 +28,12 @@ public class DiscountTest {
     }
 
     @Test
+    public void test_calculator1() {
+        GetDayCalendar calendar = new GetDayCalendar(2022, 6, 8);
+        assertEquals("Wednesday", calendar.check());
+    }
+
+    @Test
     public void test_Hmall_customer_grade() {
         assertEquals("gold", coupon.customer_grade());
     }
