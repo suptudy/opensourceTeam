@@ -9,7 +9,7 @@ public class pants implements Clothes{
     @Override
     public String product_kind(){  
         return "바지";
-    }; // 상품 카테고리 
+    }; // 상품 카테고리  
 
     @Override
     public String product_name(){
