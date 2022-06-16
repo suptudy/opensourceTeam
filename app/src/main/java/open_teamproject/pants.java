@@ -7,9 +7,9 @@ public class pants implements Clothes{
     }; // 남녀공용(0), 여성(1), 남성(2)
 
     @Override
-    public String product_kind(){ 
+    public String product_kind(){  
         return "바지";
-    }; // 상품 카테고리
+    }; // 상품 카테고리 
 
     @Override
     public String product_name(){
