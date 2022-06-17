@@ -69,7 +69,7 @@ public class Jmall extends CompanyCoupon {
     @Override
     public void event_day(String day) {
         if (day == "Saturday") {
-            System.out.println("금요일 행사로 4% 추가 누적 할인 가능");
+            System.out.println("토요일 행사로 4% 추가 누적 할인 가능");
             discount_com += 4;
         }
 
