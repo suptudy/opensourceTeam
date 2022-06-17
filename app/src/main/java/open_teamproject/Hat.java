@@ -14,7 +14,7 @@ public class Hat implements Clothes {
 
     @Override
     public String product_name() {
-        return "레거시 91 테크 스우시 캡 볼캡 모자 892651";
+        return "레거시 91 테크 스우시 캡 볼캡 모자";
     }
 
     @Override
