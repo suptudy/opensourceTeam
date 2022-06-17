@@ -5,7 +5,6 @@ import java.util.Map;
 
 public class AuctionMall extends CompanyCoupon {
     public int discount_com_a = 0; // 회사 원 단위 할인
-    public int discount_com_m = 0; // 회사 퍼센트 단위 할인
     private String customer;
     private int amountUsed;
 
@@ -69,8 +68,8 @@ public class AuctionMall extends CompanyCoupon {
     @Override
     public void event_day(String day) {
         if (day == "Friday") {
-            System.out.println("클럽데이 20%할인 쿠폰 증정(위 등급멤버쉽 쿠폰을 사용한 후에 사용가능)");
-            discount_com_m += 20;
+            System.out.println("클럽데이 5000원 추가할인");
+            discount_com_a += 5000;
         }
 
     }
@@ -85,7 +84,6 @@ public class AuctionMall extends CompanyCoupon {
         if (map.containsKey(card)) {
             discount_card = (int) map.get(card);
             System.out.println("선택하신 " + card + "로 " + discount_card + "원 할인 가능");
-            discount_com_m +=10;
         }
 
         return discount_card;
@@ -93,32 +91,25 @@ public class AuctionMall extends CompanyCoupon {
 
     @Override
     public int discount_result_com() {
-        float WonResult = clothes.price() - discount_com_a;
-        float cardResult = (float) (clothes.price() * ((100 - discount_com_m) * 0.01));
-        if(WonResult>cardResult){
             System.out.println("쇼핑몰 최대 할인 가능 : " + discount_com_a + "원");
             System.out.println();
             return discount_com_a;
-        }else{
-            System.out.println("쇼핑몰 최대 할인 가능 : " + discount_com_m + "%");
-            System.out.println();
-            return discount_com_m;
-        }
     }
 
     @Override
     public float select_discount() {
-        float WonResult = clothes.price() - discount_com_a;
-        float cardResult = (float) (clothes.price() * ((100 - discount_com_m) * 0.01));
+        float wonResult = clothes.price() - discount_com_a;
+        float cardResult = (float) (clothes.price() * 0.9);
         System.out.println();
         System.out.println("----- 최대 할인 적용 결과 -----");
-        if (WonResult > cardResult) {
-            System.out.println("[쇼핑몰할인] 최종 금액 : " + WonResult + "원");
-            return WonResult;
+        if (wonResult < cardResult) {
+            System.out.println("[쇼핑몰할인] 최종 금액 : " + wonResult + "원");
+            return wonResult;
         } else {
             System.out.println("[카드할인] 최종 금액 : " + cardResult + "원");
             return cardResult;
         }
+        
     }
 
 }
